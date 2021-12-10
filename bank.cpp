@@ -63,7 +63,7 @@ void Bank :: serve()
             cout << "Customer no : " << curr_serving << " by cashier no : " << lastServedCashier + 1 << endl;
             cashier[lastServedCashier + 1]->serve();
             lastServedCashier++;
-            cashier[lastServedCashier + 1]->free();
+            cashier[lastServedCashier]->free();
         }
     }
     exit();
