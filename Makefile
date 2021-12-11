@@ -28,7 +28,7 @@ val:
 	valgrind --leak-check=full -v ./$(PROGRAM) 5 10 11 5
 
 debug:
-	gdb ./$(PROGRAM) 5 10 11 5
+	gdb ./$(PROGRAM)
 	
 	# Usefull comands for gdb : 
 	#			run program_arguments or < file_name----------> to run your program
