@@ -17,7 +17,7 @@ class Cashier
         void close(){isOpen = false;}
         void serve(){isFree = false;}
         
-        void free()
+        bool free() // It returns false when the cashier close because it overworked
         {
             isFree = true; 
             customers_served++; 
@@ -25,7 +25,10 @@ class Cashier
             {
                 this->close();
                 cout << "The cashier closed because it overworked!" << endl;
+                customers_served = 0;
+                return false;
             }
+            return true;
         }
 
         bool is_open() const {return isOpen;}

@@ -1,5 +1,5 @@
-OBJS = main.o  bank.o cashier.o
-SOURCE = main.cpp  bank.cpp cashier.cpp
+OBJS = main.o  bank.o
+SOURCE = main.cpp  bank.cpp
 HEADER = bank.h cashier.h
 PROGRAM = exe
 CC = g++
@@ -15,17 +15,14 @@ main.o: main.cpp
 bank.o: bank.cpp
 	$(CC) $(DEBUGER) $(CFLAGS) -c bank.cpp 
 
-cashier.o: cashier.cpp
-	$(CC) $(DEBUGER) $(CFLAGS) -c cashier.cpp 
-
 clean:
 	rm -f $(OBJS) $(PROGRAM)
 	
 run:
-	./$(PROGRAM) 5 10 11 5
+	./$(PROGRAM) 5 1 15 1
 	
 val:
-	valgrind --leak-check=full -v ./$(PROGRAM) 5 10 11 5
+	valgrind --leak-check=full -v ./$(PROGRAM) 5 1 5 10
 
 debug:
 	gdb ./$(PROGRAM)

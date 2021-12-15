@@ -17,62 +17,53 @@ int main(int argc, char* argv[])
     cout << "K = " << K << " M = " << M << " N = " << N << " L = " << L << endl;
 	Bank bank(L, K);
 
-	// cout << endl << "-----------------------------------------------------------------------------------------------------------------------------" << endl << endl ;
-	// cout << "                       Β. Να δημιουργεί " << L << " βιβλία." << endl;
-	// cout << endl << "-----------------------------------------------------------------------------------------------------------------------------" << endl << endl ;
+	cout << endl << "-----------------------------------------------------------------------------------------------------------------------------" << endl << endl ;
+	cout << "                       Β. Για κάθε " << N << " πελάτες που εισέρχονται στην τράπεζα αυτή να εξυπηρετεί όσους είναι δυνατό " << endl <<
+			"                          με βάση τα ταμεία που είναι ανοικτά (αυτό εξαρτάται από το πλήθος " << N << " των πελατών που " << endl <<
+    		"                          μπήκαν). Η διαδικασία αυτή να επαναλαμβάνεται " << M << " ϕορές." << endl;
+	cout << endl << "-----------------------------------------------------------------------------------------------------------------------------" << endl << endl ;
+
+	int notEnteredCustomers = 0, enteredCustomers = 0;
+	for(int i = 0; i < M; i++) // M repeats
+	{
+		for(int j = 0; j < N; j++) // trying to enter N customers
+		{
+			if(bank.enter()) // If the customer can't enter the bank
+			{
+				enteredCustomers++;
+			}
+			else
+				notEnteredCustomers++;
+		}
+	}
+
+	cout << enteredCustomers << " entered the bank and " << notEnteredCustomers << " didn't entered the bank, so " << enteredCustomers << " will be served now." << endl;
 	
-	// Book *book[L];
+	for(int i = 0; i < enteredCustomers; i++)
+	{
+		bank.serve();
+	}
 
-	// for(int i = 0; i < L; i++)
-	// {
-	// 	book[i] = new Book("title" + to_string(i), "nameSurenameOfAuthor" + to_string(i), i);
-	// }
+	cout << endl << "-----------------------------------------------------------------------------------------------------------------------------" << endl << endl ;
+	cout << "                       Γ. Στη συνέχεια να εξυπηρετούνται όλοι οι υπόλοιποι πελάτες που περιμένουν να εξυπηρετηθούν." << endl;
+	cout << endl << "-----------------------------------------------------------------------------------------------------------------------------" << endl << endl ;
 
+	if(notEnteredCustomers == 0)
+	{
+		cout << "All the customers have entered the bank and served." << endl << endl;
+	}
 
-	// cout << endl << "-----------------------------------------------------------------------------------------------------------------------------" << endl << endl ;
-	// cout << "                       Γ. Να πραγματοποιεί " << K1 << " τυχαίες τοποθετήσεις βιβλίων στη βιβλιοθήκη." << endl;
-	// cout << endl << "-----------------------------------------------------------------------------------------------------------------------------" << endl << endl ;
-
-
-	// int numberOfBooksToPlace = L;
-	// if(L > K1)
-	// {
-	// 	numberOfBooksToPlace = K1;
-	// }
-	// else if(L < K1)
-	// {
-	// 	cout << "ERROR : You want to place " << K1 << " books, but you have " << L << " books. So " << L << " books will be placed." << endl;
-	// }
-	
-	// srand((unsigned) time(0));
-
-	// for(int i = 0; i < numberOfBooksToPlace; i++)
-	// {
-	// 	int randomShelf = rand() % (5) + 1;
-	// 	bookCase.place_book(randomShelf, *book[i]);
-	// }
-
-	// cout << endl << "-----------------------------------------------------------------------------------------------------------------------------" << endl << endl ;
-	// cout << "                       Δ. Να πραγματοποιεί " << K2 << " τυχαίες αϕαιρέσεις βιβλίων στη βιβλιοθήκη." << endl;
-	// cout << endl << "-----------------------------------------------------------------------------------------------------------------------------" << endl << endl ;
-
-	// for(int i = 0; i < K2; i++)
-	// {
-	// 	int randomShelf = rand() % (5) + 1;
-	// 	bookCase.take_book(randomShelf);
-	// }
-
-	// cout << endl << "-----------------------------------------------------------------------------------------------------------------------------" << endl << endl ;
-	// cout << "                       Ε. Να κάνει εκτύπωση στην βιβλιοθήκη" << endl;
-	// cout << endl << "-----------------------------------------------------------------------------------------------------------------------------" << endl << endl ;
-
-	// bookCase.print();
-	
-	// // Deleting Books 
-	// for(int i = 0; i < L; i++)
-	// {
-	// 	delete book[i];
-	// }
+	while(notEnteredCustomers != 0)
+	{
+		int customersToEnter = notEnteredCustomers;
+		for(int i = 0; i < customersToEnter; i++)
+		{
+			if(bank.enter())
+			{
+				notEnteredCustomers--;
+			}
+		}
+	}
 
 	cout << "                             --- THE PROGRAM ENDED ---                                 " << endl << endl ;
 	return 0;
