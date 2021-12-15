@@ -56,12 +56,19 @@ int main(int argc, char* argv[])
 	while(notEnteredCustomers != 0)
 	{
 		int customersToEnter = notEnteredCustomers;
+		int customersEntered = 0;
 		for(int i = 0; i < customersToEnter; i++)
 		{
 			if(bank.enter())
 			{
+				customersEntered++;
 				notEnteredCustomers--;
 			}
+		}
+
+		for(int i = 0; i < customersEntered; i++)
+		{
+			bank.serve();
 		}
 	}
 

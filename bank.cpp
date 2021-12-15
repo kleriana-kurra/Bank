@@ -94,11 +94,12 @@ void Bank :: exit()
     curr_serving++;
     if(check_to_close())
     {
-        for(int i; i < NUMBEROFCASHIERS; i++)
+        for(int i = 0; i < NUMBEROFCASHIERS; i++)
         {
             if(cashier[i]->is_open() && cashier[i]->is_free())
             {
                 cashier[i]->close();
+                openCashiers--;
                 break;
             }
         }

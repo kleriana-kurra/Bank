@@ -3,7 +3,7 @@ SOURCE = main.cpp  bank.cpp
 HEADER = bank.h cashier.h
 PROGRAM = exe
 CC = g++
-CFLAGS = -Wall -W
+CFLAGS = -Wall
 DEBUGER = -g3
 
 $(PROGRAM): clean $(OBJS)
@@ -19,10 +19,10 @@ clean:
 	rm -f $(OBJS) $(PROGRAM)
 	
 run:
-	./$(PROGRAM) 5 1 15 1
+	./$(PROGRAM) 5 2 15 8
 	
 val:
-	valgrind --leak-check=full -v ./$(PROGRAM) 5 1 5 10
+	valgrind --leak-check=full -v ./$(PROGRAM) 5 2 15 8
 
 debug:
 	gdb ./$(PROGRAM)

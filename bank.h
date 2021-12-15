@@ -25,14 +25,6 @@ class Bank
         void close(Cashier *, const int &);
         int waiting_customers(){return (last_customer - curr_serving);}
         int open_cashiers(){return openCashiers;}
-
-        // void set(){}
-        // void set(){}
-        // void set(){}
-
-        // string get() const{}
-        // string get() const{}
-        // int get() const{}
 };
 
 #endif
